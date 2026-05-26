@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nabeel Hashmi — GTM Engineer</title>
+<meta name="description" content="Five AI agents. One GTM framework. Built in the right sequence, on the right foundation — with the right handoffs between agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f1eb;
+  --bg2:#ece9e1;
+  --bg3:#e4e0d6;
+  --ink:#18160f;
+  --ink2:#57534a;
+  --ink3:#96917f;
+  --ink4:#c4bfb0;
+  --border:rgba(24,22,15,0.08);
+  --border2:rgba(24,22,15,0.15);
+  --border3:rgba(24,22,15,0.22);
+  --dark:#16130f;
+  --dark2:#1e1b16;
+  --dark3:#252119;
+  --dark-border:rgba(255,255,255,0.06);
+  --dark-border2:rgba(255,255,255,0.1);
+  --green:#3a8f65;
+  --green-dim:rgba(58,143,101,0.15);
+  --green-border:rgba(58,143,101,0.25);
+  --serif:'Fraunces',Georgia,serif;
+  --mono:'Geist Mono',monospace;
+  --sans:'Geist',sans-serif;
+  --r:4px;
+  --max:940px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(244,241,235,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:50px;display:flex;align-items:center;padding:0 2rem}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-name{font-family:var(--mono);font-size:11px;color:var(--ink);letter-spacing:0.04em;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:10px;color:var(--ink3);text-decoration:none;letter-spacing:0.06em;transition:color 0.15s;text-transform:uppercase}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* HERO */
+.hero{max-width:var(--max);margin:0 auto;padding:7rem 2rem 6rem;border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:300;line-height:1.04;letter-spacing:-0.02em;color:var(--ink);margin-bottom:2.5rem;max-width:760px}
+.hero h1 em{font-style:italic;color:var(--ink3)}
+.hero-premise{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border)}
+@media(max-width:640px){.hero-premise{grid-template-columns:1fr;gap:2rem}}
+.premise-block p{font-size:15px;color:var(--ink2);line-height:1.85}
+.premise-block p+p{margin-top:1rem}
+.premise-block strong{color:var(--ink);font-weight:500}
+.hero-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.hero-stats{display:flex;gap:3rem;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat-n{font-family:var(--serif);font-size:2.2rem;font-weight:300;line-height:1;color:var(--ink)}
+.stat-l{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.08em;text-transform:uppercase}
+.hero-cta{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;padding:8px 16px;border-radius:var(--r);text-decoration:none;transition:all 0.15s;cursor:pointer;border:none;outline:none}
+.btn-dark{background:var(--ink);color:var(--bg)}
+.btn-dark:hover{background:#2a2720}
+.btn-ghost{background:transparent;border:1px solid var(--border3);color:var(--ink2)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+
+/* SHARED SECTION SHELL */
+.w{max-width:var(--max);margin:0 auto;padding:0 2rem}
+.section-pad{padding:5rem 0}
+
+/* SECTION LABELS */
+.eyebrow{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem}
+.eyebrow-light{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem}
+.section-h{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.08;letter-spacing:-0.015em;margin-bottom:1.25rem}
+.section-h em{font-style:italic;color:var(--ink3)}
+.section-h-light{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.08;letter-spacing:-0.015em;margin-bottom:1.25rem;color:#f0ece3}
+.section-h-light em{font-style:italic;color:rgba(240,236,227,0.45)}
+.section-intro{font-size:15px;color:var(--ink2);line-height:1.85;max-width:620px;margin-bottom:3rem}
+.section-intro-light{font-size:15px;color:rgba(255,255,255,0.3);line-height:1.85;max-width:620px;margin-bottom:3rem}
+
+/* ═══════════════════════════════
+   ENGINE — DARK SECTION
+═══════════════════════════════ */
+.engine-section{background:var(--dark);padding:5.5rem 0}
+
+/* Architecture table */
+.arch-table{width:100%;border:1px solid var(--dark-border);border-radius:6px;overflow:hidden;margin-bottom:4rem;border-collapse:collapse}
+.arch-tr{display:grid;grid-template-columns:56px 180px 1fr 100px;border-bottom:1px solid var(--dark-border)}
+.arch-tr:last-child{border-bottom:none}
+.arch-tr:hover{background:rgba(255,255,255,0.02)}
+.arch-tr.header{background:rgba(255,255,255,0.03)}
+@media(max-width:680px){
+  .arch-tr{grid-template-columns:1fr;border-bottom:1px solid var(--dark-border)}
+  .arch-tr.header{display:none}
+  .arch-td{border-right:none!important;padding:0.6rem 1.25rem}
+  .arch-td.step-col{padding-top:1rem;border-bottom:none}
+  .arch-td.tag-col{padding-bottom:1rem}
+}
+.arch-td{padding:1.1rem 1.25rem;border-right:1px solid var(--dark-border);font-size:12px}
+.arch-td:last-child{border-right:none}
+.arch-td.step-col{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.15);letter-spacing:0.08em;display:flex;align-items:center}
+.arch-td.name-col{display:flex;align-items:center}
+.arch-td.desc-col{}
+.arch-td.tag-col{display:flex;align-items:center;justify-content:flex-end}
+.arch-head{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center}
+.arch-name{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:0.02em}
+.arch-desc-text{font-size:12px;color:rgba(255,255,255,0.28);line-height:1.6}
+.tag{font-family:var(--mono);font-size:9px;padding:3px 7px;border-radius:3px;letter-spacing:0.04em;white-space:nowrap}
+.tag-tool{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.08)}
+.tag-live{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+
+/* Runnable agents */
+.agents-eyebrow{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem}
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--dark-border);border:1px solid var(--dark-border);border-radius:6px;overflow:hidden}
+@media(max-width:720px){.agents-grid{grid-template-columns:1fr}}
+.agent-card{background:var(--dark2);padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
+.agent-card-num{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.18);letter-spacing:0.1em;text-transform:uppercase}
+.agent-card-title{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:#e8e4db;line-height:1.2}
+.agent-card-desc{font-size:12px;color:rgba(255,255,255,0.28);line-height:1.7;flex:1}
+.field-label{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;display:block;margin-bottom:5px;text-transform:uppercase}
+.dark-input,.dark-textarea,.dark-select{
+  width:100%;font-family:var(--sans);font-size:12px;color:rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.04);border:1px solid var(--dark-border2);
+  border-radius:var(--r);padding:8px 11px;outline:none;transition:border-color 0.15s;
+}
+.dark-textarea{resize:vertical;min-height:76px}
+.dark-input:focus,.dark-textarea:focus,.dark-select:focus{border-color:rgba(58,143,101,0.5)}
+.dark-select{
+  cursor:pointer;-webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,0.2)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;padding-right:26px;
+}
+.dark-select option{background:var(--dark2);color:rgba(255,255,255,0.6)}
+.run-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;
+  padding:9px 13px;background:var(--green-dim);color:var(--green);
+  border:1px solid var(--green-border);border-radius:var(--r);
+  cursor:pointer;transition:all 0.15s;margin-top:4px;
+}
+.run-btn:hover{background:rgba(58,143,101,0.22);border-color:rgba(58,143,101,0.4)}
+.run-btn:disabled{opacity:0.3;cursor:not-allowed}
+.run-arrow{display:inline-block;transition:transform 0.15s}
+.spinning{animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.out-area{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--dark-border);display:none}
+.out-area.on{display:block}
+.out-lbl{font-family:var(--mono);font-size:9px;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.out-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.out-text.blink::after{content:'▋';animation:blink 0.65s step-end infinite;color:var(--green)}
+@keyframes blink{50%{opacity:0}}
+
+/* ═══════════════════════════════
+   FIVE AGENTS — LIGHT SECTION
+═══════════════════════════════ */
+.agents-section{background:var(--bg);border-top:1px solid var(--border)}
+.rollout-bar{display:flex;align-items:stretch;border:1px solid var(--border2);border-radius:6px;overflow:hidden;margin-bottom:3.5rem}
+@media(max-width:580px){.rollout-bar{flex-direction:column}}
+.rollout-step{flex:1;padding:1rem 1.25rem;border-right:1px solid var(--border2);display:flex;flex-direction:column;gap:4px;transition:background 0.15s}
+.rollout-step:last-child{border-right:none}
+.rollout-step.highlight{background:var(--bg2)}
+.rollout-num{font-family:var(--mono);font-size:9px;color:var(--ink4);letter-spacing:0.08em}
+.rollout-name{font-family:var(--mono);font-size:10px;color:var(--ink2);letter-spacing:0.02em}
+.rollout-step.highlight .rollout-name{color:var(--ink)}
+
+/* Agent detail blocks */
+.agent-detail{border-top:1px solid var(--border);padding:3.5rem 0}
+.agent-detail:first-child{border-top:none;padding-top:0}
+.agent-detail-inner{display:grid;grid-template-columns:260px 1fr;gap:4rem}
+@media(max-width:680px){.agent-detail-inner{grid-template-columns:1fr;gap:2rem}}
+.agent-meta{display:flex;flex-direction:column;gap:1rem}
+.agent-index{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase}
+.agent-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);line-height:1.2}
+.agent-prereq{font-size:12px;color:var(--ink3);line-height:1.6;border-left:2px solid var(--border3);padding-left:0.875rem}
+.agent-prereq strong{color:var(--ink2);font-weight:500;display:block;margin-bottom:3px;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase}
+.agent-body{font-size:14px;color:var(--ink2);line-height:1.9}
+.agent-body p+p{margin-top:1.25rem}
+.agent-body strong{color:var(--ink);font-weight:500}
+
+/* Routing logic */
+.routing-logic{margin-top:1.5rem;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.routing-row{display:flex;align-items:baseline;gap:0;border-bottom:1px solid var(--border);font-size:12px}
+.routing-row:last-child{border-bottom:none}
+.routing-signal{padding:0.7rem 1rem;color:var(--ink3);min-width:220px;border-right:1px solid var(--border);line-height:1.5}
+@media(max-width:580px){.routing-signal{min-width:0;width:45%}}
+.routing-action{padding:0.7rem 1rem;color:var(--ink2);line-height:1.5;flex:1}
+.routing-row.header .routing-signal,.routing-row.header .routing-action{font-family:var(--mono);font-size:9px;color:var(--ink4);letter-spacing:0.08em;text-transform:uppercase;background:var(--bg2);padding:0.5rem 1rem}
+
+/* ═══════════════════════════════
+   FUTURE — DARK SECTION
+═══════════════════════════════ */
+.future-section{background:var(--dark);border-top:1px solid var(--dark-border);padding:5.5rem 0}
+.future-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--dark-border);border-radius:6px;overflow:hidden}
+@media(max-width:620px){.future-grid{grid-template-columns:1fr}}
+.future-cell{padding:2.25rem;border-right:1px solid var(--dark-border);border-bottom:1px solid var(--dark-border)}
+.future-cell:nth-child(2n){border-right:none}
+.future-cell:nth-child(3),.future-cell:nth-child(4){border-bottom:none}
+@media(max-width:620px){
+  .future-cell{border-right:none}
+  .future-cell:nth-child(3){border-bottom:1px solid var(--dark-border)}
+  .future-cell:nth-child(4){border-bottom:none}
+}
+.future-label{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.875rem}
+.future-claim{font-family:var(--serif);font-size:1.15rem;font-weight:300;color:#e8e4db;line-height:1.25;margin-bottom:0.875rem}
+.future-body{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.8}
+
+/* ═══════════════════════════════
+   CONTACT
+═══════════════════════════════ */
+.contact-section{background:var(--bg);border-top:1px solid var(--border);padding:5rem 0 5.5rem}
+.contact-links{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:2rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.25rem 2rem}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fm{font-family:var(--mono);font-size:9px;color:var(--ink4);letter-spacing:0.06em}
+.fm a{color:var(--ink3);text-decoration:none}
+.fm a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Nabeel Hashmi</a>
+    <ul class="nav-links">
+      <li><a href="#engine">Engine</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#future">Future</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">GTM Engineer · AI Outbound Systems · DACH</p>
+  <h1>Five agents.<br>One shared foundation.<br><em>Here's how it works.</em></h1>
+  <div class="hero-premise">
+    <div class="premise-block">
+      <p>The AI GTM stack has a sequencing problem. Everyone deploys the outbound agent first — the most visible, the most exciting — without building the foundation it runs on. The result is faster dysfunction, not faster growth.</p>
+      <p>The framework below is built differently. <strong>Five agents, each solving a specific layer of the revenue motion, deployed in a sequence that compounds.</strong> Start with what makes the AI layer reliable. Then build what makes it scale.</p>
+    </div>
+    <div class="premise-block">
+      <p>The possibilities aren't theoretical. Each agent below is designed, documented, and deployable — with a clear prerequisite, a clear output, and a clear place in the sequence.</p>
+      <p><strong>The question isn't whether to build the AI layer.</strong> It's whether to build it in the right order, on the right foundation, with the right handoffs between agents.</p>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">5</span><span class="stat-l">Agents, one system</span></div>
+      <div class="stat"><span class="stat-n">29</span><span class="stat-l">Nodes, live build</span></div>
+      <div class="stat"><span class="stat-n">5×5</span><span class="stat-l">Persona × vertical matrix</span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#engine" class="btn btn-dark">See the engine ↓</a>
+      <a href="https://www.linkedin.com/in/nabeelahashmi/" target="_blank" class="btn btn-ghost">LinkedIn →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ENGINE — DARK -->
+<div class="engine-section" id="engine">
+  <div class="w">
+    <p class="eyebrow-light">// agent 05 · outbound signal</p>
+    <h2 class="section-h-light">The AI outbound engine.<br><em>Not a black box.</em></h2>
+    <p class="section-intro-light">Built for an AI infrastructure startup targeting 2,600 enterprise accounts in Germany. One BDR. Zero cold lists. The system monitors signals, routes by persona and vertical, and generates personalised email, LinkedIn messages, and call briefs — all delivered to the BDR for review before anything launches.</p>
+
+    <!-- Architecture table -->
+    <div class="arch-table">
+      <div class="arch-tr header">
+        <div class="arch-td step-col"><span class="arch-head">Step</span></div>
+        <div class="arch-td name-col"><span class="arch-head">Sub-agent</span></div>
+        <div class="arch-td desc-col"><span class="arch-head">What it does</span></div>
+        <div class="arch-td tag-col"><span class="arch-head">Stack</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">01</div>
+        <div class="arch-td name-col"><span class="arch-name">Signal Ingestion</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Apollo monitors hiring signals, job changes, and tech stack triggers across 2,600 target accounts. Each match enters the workflow with company and contact context already attached — the system doesn't pull on demand, it listens continuously.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-tool">Apollo</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">02</div>
+        <div class="arch-td name-col"><span class="arch-name">Enrichment & Dedup</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Every incoming contact is cross-checked against a Google Sheets dedup log. Already enrolled in a sequence? Stopped immediately. New contact? Firmographic enrichment is appended before any routing decision is made — title, seniority, vertical, company size.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-tool">Clay · Sheets</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">03</div>
+        <div class="arch-td name-col"><span class="arch-name">Persona × Vertical Router</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Contact classified across two axes simultaneously: persona (Data Leader, CTO, AI Lead, CFO, Head of Product) and vertical (SaaS, Fintech, Logistics, Ecomm, Enterprise). 25 routing paths. Each one leads to a different system prompt — not a variation, a genuinely different angle.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-live">runnable ↓</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">04</div>
+        <div class="arch-td name-col"><span class="arch-name">AI Copy Agent</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Claude generates a personalised email anchored to the specific trigger signal, routing path, and enrichment data. Prompt-engineered to produce specificity by default — the model is given the signal, the persona context, and a hard constraint against generic openers before it writes a single word.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-tool">Claude API</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">05</div>
+        <div class="arch-td name-col"><span class="arch-name">Quality Guardrail (QP3)</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Copy is scored across three dimensions before it sends: signal relevance, personalisation depth, clarity of ask. Anything below threshold is flagged and the weakest element rewritten automatically. Nothing generic exits the system — this is the gate, not a suggestion.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-live">runnable ↓</span></div>
+      </div>
+      <div class="arch-tr">
+        <div class="arch-td step-col">06</div>
+        <div class="arch-td name-col"><span class="arch-name">Delivery & CRM Sync</span></div>
+        <div class="arch-td desc-col"><p class="arch-desc-text">Approved copy enters a Lemlist sequence. Contact status and sequence enrollment synced to HubSpot. Dedup log updated to prevent re-enrollment on future signal triggers. The system closes its own loop without human intervention.</p></div>
+        <div class="arch-td tag-col"><span class="tag tag-tool">Lemlist · HubSpot</span></div>
+      </div>
+    </div>
+
+    <!-- Three runnable sub-agents -->
+    <p class="agents-eyebrow">// three sub-agents you can run now</p>
+    <div class="agents-grid">
+
+      <!-- Signal Classifier -->
+      <div class="agent-card">
+        <p class="agent-card-num">01 · Signal Ingestion layer</p>
+        <h3 class="agent-card-title">Signal Classifier</h3>
+        <p class="agent-card-desc">Paste any raw signal — a job post, LinkedIn update, funding announcement, press release. Returns the signal type, implied buying intent, urgency window, and the exact outreach hook the engine would open with. This is step 1 made visible.</p>
+        <div>
+          <label class="field-label">Paste signal text</label>
+          <textarea class="dark-textarea" id="a1-in" placeholder="e.g. 'We're hiring a Head of Data Engineering to own our MongoDB infrastructure and build out our AI data layer across three product lines...'"></textarea>
+        </div>
+        <button class="run-btn" id="a1-btn" onclick="runA1()">
+          <span>▶ Classify signal</span>
+          <span class="run-arrow" id="a1-arr">→</span>
+        </button>
+        <div class="out-area" id="a1-out">
+          <p class="out-lbl">// output</p>
+          <p class="out-text" id="a1-txt"></p>
+        </div>
+      </div>
+
+      <!-- Copy Router -->
+      <div class="agent-card">
+        <p class="agent-card-num">02 · Persona × Vertical Router</p>
+        <h3 class="agent-card-title">Copy Router</h3>
+        <p class="agent-card-desc">Pick a buyer persona and vertical. The router returns the specific pain point framing, value prop angle, and a sharp opening line — one of 25 paths the engine can take. The same logic that drives all copy generation in the live system.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div>
+            <label class="field-label">Buyer persona</label>
+            <select class="dark-select" id="a2-persona">
+              <option value="Data Leader / VP Data / Head of Data">Data Leader</option>
+              <option value="CTO / VP Engineering">CTO / VP Engineering</option>
+              <option value="AI Lead / Head of AI / ML Lead">AI Lead</option>
+              <option value="CFO / VP Finance">CFO</option>
+              <option value="Head of Product / CPO">Head of Product</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label">Company vertical</label>
+            <select class="dark-select" id="a2-vertical">
+              <option value="B2B SaaS">B2B SaaS</option>
+              <option value="Fintech / Financial Services">Fintech</option>
+              <option value="Logistics / Supply Chain">Logistics</option>
+              <option value="E-commerce / Retail">E-commerce</option>
+              <option value="Enterprise Software">Enterprise</option>
+            </select>
+          </div>
+        </div>
+        <button class="run-btn" id="a2-btn" onclick="runA2()">
+          <span>▶ Route and generate</span>
+          <span class="run-arrow" id="a2-arr">→</span>
+        </button>
+        <div class="out-area" id="a2-out">
+          <p class="out-lbl">// output</p>
+          <p class="out-text" id="a2-txt"></p>
+        </div>
+      </div>
+
+      <!-- QP3 -->
+      <div class="agent-card">
+        <p class="agent-card-num">03 · Quality Guardrail</p>
+        <h3 class="agent-card-title">QP3 Scorer</h3>
+        <p class="agent-card-desc">Paste any cold email draft. QP3 scores it across signal relevance, personalisation depth, and clarity of ask — flags precisely what would be killed before sending, then rewrites the weakest element. This is the gate between the copy agent and delivery.</p>
+        <div>
+          <label class="field-label">Paste cold email draft</label>
+          <textarea class="dark-textarea" id="a3-in" placeholder="e.g. 'Hi Sarah, I came across your profile and thought our platform could be a great fit for Acme. We work with companies like yours to improve pipeline efficiency...'"></textarea>
+        </div>
+        <button class="run-btn" id="a3-btn" onclick="runA3()">
+          <span>▶ Score and fix</span>
+          <span class="run-arrow" id="a3-arr">→</span>
+        </button>
+        <div class="out-area" id="a3-out">
+          <p class="out-lbl">// output</p>
+          <p class="out-text" id="a3-txt"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FIVE AGENTS — LIGHT -->
+<div class="agents-section section-pad" id="framework">
+  <div class="w">
+    <p class="eyebrow">// the full framework</p>
+    <h2 class="section-h">Five agents.<br><em>One shared foundation.</em></h2>
+    <p class="section-intro">The outbound engine above is agent five. It only works reliably if the four agents below it have already run. This is the rollout sequence — and the order is not arbitrary. Each agent creates the conditions the next one depends on.</p>
+
+    <!-- Rollout sequence bar -->
+    <div class="rollout-bar">
+      <div class="rollout-step"><span class="rollout-num">01</span><span class="rollout-name">CRM Maintenance</span></div>
+      <div class="rollout-step"><span class="rollout-num">02</span><span class="rollout-name">Inbound Qualification</span></div>
+      <div class="rollout-step"><span class="rollout-num">03</span><span class="rollout-name">Lead Nurturing</span></div>
+      <div class="rollout-step"><span class="rollout-num">04</span><span class="rollout-name">Pipeline Reactivation</span></div>
+      <div class="rollout-step highlight"><span class="rollout-num">05</span><span class="rollout-name">Outbound Signal ←</span></div>
+    </div>
+
+    <!-- Agent 01 -->
+    <div class="agent-detail">
+      <div class="agent-detail-inner">
+        <div class="agent-meta">
+          <p class="agent-index">Agent 01</p>
+          <h3 class="agent-title">CRM Maintenance Agent</h3>
+          <div class="agent-prereq">
+            <strong>Build this first</strong>
+            CRM data rots at 20–30% per year. Every agent in the stack reads from this foundation. Don't build any of the others until this one is running.
+          </div>
+        </div>
+        <div class="agent-body">
+          <p>This is the one nobody demos at conferences. Unlike the pipeline reactivation agent — which makes targeted, signal-driven decisions about what's worth pursuing — the CRM maintenance agent works on everything, all the time, regardless of deal status. It doesn't decide what to pursue. It decides what's accurate.</p>
+          <p>It runs continuously in the background: validating emails, flagging job changes, merging duplicates, closing deals that have gone cold by every objective measure. It's not exciting. It's not the one you put in the board deck. But it's the one you build first — because without it, every agent above it degrades over time.</p>
+          <p><strong>The compounding problem it solves:</strong> a pipeline worked by an outbound agent is only as good as the contact data underneath it. An AI agent won't notice that the "hot prospect" it's personalising outreach for changed jobs fourteen months ago. It'll just keep going — faster, at higher volume, with worse results. The maintenance agent stops that before it starts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent 02 -->
+    <div class="agent-detail">
+      <div class="agent-detail-inner">
+        <div class="agent-meta">
+          <p class="agent-index">Agent 02</p>
+          <h3 class="agent-title">Inbound Qualification Agent</h3>
+          <div class="agent-prereq">
+            <strong>Prerequisite</strong>
+            Clean CRM contact data. If duplicates exist or company records are stale, the routing logic misfires — a contact gets flagged as new when they're a returning prospect, or a competitor slips through.
+          </div>
+        </div>
+        <div class="agent-body">
+          <p>The inbound qualification agent fires the moment a lead hits your form. It enriches the contact through Clay and Apollo — firmographics, LinkedIn headcount, job postings, funding data — checks whether anyone from that company has been in your CRM before, scores them by fit and intent, and routes them into one of several specialist branches, each with its own follow-up logic.</p>
+          <p>For high-value ICP fits, a fully briefed Slack notification lands with the AE and a context-aware meeting request goes to the prospect simultaneously — not a generic "book a call" link, but a message that acknowledges what they submitted and gives them a direct calendar link. All of this happens in under three minutes — before your competitor has opened the notification.</p>
+          <p><strong>The routing logic:</strong></p>
+          <div class="routing-logic">
+            <div class="routing-row header">
+              <div class="routing-signal">Signal</div>
+              <div class="routing-action">Action</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">ICP fit, high intent</div>
+              <div class="routing-action">Immediate AE brief + personalised meeting request to prospect within 3 minutes</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">ICP fit, low intent</div>
+              <div class="routing-action">Signal-based nurture sequence enrolled, AE alerted but no immediate outreach</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Existing account contact</div>
+              <div class="routing-action">Flagged to CSM with full account history context attached</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Previous closed-lost</div>
+              <div class="routing-action">AE notified with original deal context and lost reason</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Near-ICP, incomplete data</div>
+              <div class="routing-action">Enrichment triggered before any routing decision is made</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Agency or partner signal</div>
+              <div class="routing-action">Routed to partnerships queue</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Competitor</div>
+              <div class="routing-action">Logged and archived — no outreach</div>
+            </div>
+            <div class="routing-row">
+              <div class="routing-signal">Unqualified / catch-all</div>
+              <div class="routing-action">Flagged for manual triage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent 03 -->
+    <div class="agent-detail">
+      <div class="agent-detail-inner">
+        <div class="agent-meta">
+          <p class="agent-index">Agent 03</p>
+          <h3 class="agent-title">Lead Nurturing Agent</h3>
+          <div class="agent-prereq">
+            <strong>Prerequisite</strong>
+            Accurate contact data and a clean record of prior touchpoints. The agent needs to know what a prospect has already received — otherwise it re-sends, contradicts itself, or picks up a dead conversation as if it were live.
+          </div>
+        </div>
+        <div class="agent-body">
+          <p>The lead nurturing agent doesn't run on a drip timer. It monitors genuine buyer signals — page revisits, content consumption, and social engagement on LinkedIn. For US markets, IP-reveal tools like RB2B add an additional layer of intent data. In Europe, GDPR-compliant visitor identification tools like Dealfront fill that gap — different data source, same principle.</p>
+          <p><strong>Respond to signal, not to schedule.</strong> It knows what the prospect has looked at, what they haven't responded to, and what message is appropriate right now. The difference between this and a standard nurture sequence is the difference between a relevant conversation and noise. A prospect who revisited your pricing page twice this week and watched a product demo is not the same conversation as one who opened one email three months ago.</p>
+          <p>The agent surfaces that distinction and acts on it — the message that goes out references what they've actually engaged with, not a generic "just checking in."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent 04 -->
+    <div class="agent-detail">
+      <div class="agent-detail-inner">
+        <div class="agent-meta">
+          <p class="agent-index">Agent 04</p>
+          <h3 class="agent-title">Pipeline Reactivation Agent</h3>
+          <div class="agent-prereq">
+            <strong>Prerequisite</strong>
+            Accurately recorded lost reasons. If the CRM shows "closed lost" with no reason, the agent can't distinguish a timing objection from a fundamental product gap — and it can't surface the ones worth waking up.
+          </div>
+        </div>
+        <div class="agent-body">
+          <p>The pipeline reactivation agent does the work nobody wants to do manually. It goes through your dormant deals — not blindly by age, but intelligently. It cross-references the original closed-lost reason against current signals: stakeholder changes on LinkedIn, new hires, funding rounds, tech stack shifts.</p>
+          <p>A deal lost for timing two quarters ago, at a company that just hired a new VP Sales, is a very different conversation than one lost on missing functionality that still doesn't exist. The agent surfaces the ones genuinely worth waking up. <strong>Everything else gets permanently archived.</strong></p>
+          <p>This is also the agent that exposes pipeline inflation most directly. When it runs its checks and finds nothing to justify reactivation, it archives the deal. Do that across your full pipeline and the number becomes visible fast: you had 80 opportunities marked "nurturing." The agent archives 55 of them. What's left is your real pipeline. That's uncomfortable — and that's the point. The outbound agent running on clean pipeline is a fundamentally different system than one running on a graveyard.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent 05 -->
+    <div class="agent-detail">
+      <div class="agent-detail-inner">
+        <div class="agent-meta">
+          <p class="agent-index">Agent 05</p>
+          <h3 class="agent-title">Outbound Signal Agent</h3>
+          <div class="agent-prereq">
+            <strong>Prerequisite</strong>
+            All four agents above running. Clean contact data, no duplicates, accurate pipeline, a live nurture layer. The outbound agent is the most visible — and the most brittle if the foundation underneath it is wrong.
+          </div>
+        </div>
+        <div class="agent-body">
+          <p>The outbound signal agent doesn't work from a static list. It monitors for real buying triggers — funding announcements, SDR hiring posts, tech stack changes, new executive hires. Each of these is a signal of intent: a company adding headcount in sales is probably buying sales tools, a new CRO is likely reviewing the existing stack, a funding round opens budget that didn't exist last quarter.</p>
+          <p>It fires personalised outreach at the exact moment of relevance — not three weeks later when the list gets refreshed. <strong>Right now, when the window is open.</strong></p>
+          <p>Every contact routes through a classification matrix: persona, seniority, vertical, company size, geography, signal type. The agent generates three outputs per contact: a personalised email, a LinkedIn message, and a call brief — all tailored to the same signal and routing path, all delivered to the BDR for review before anything launches. The BDR doesn't research or write. They review, approve, and execute.</p>
+          <p>A VP Sales at a Series B SaaS company that just posted three SDR roles gets a completely different set of outputs than a CRO at a mid-market logistics firm that just closed a Series A. The copy isn't a variation — it's a different angle, written by a different prompt, for a different outcome. That's what the 5×5 routing matrix produces. Run the Copy Router to see it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FUTURE — DARK -->
+<div class="future-section" id="future">
+  <div class="w">
+    <p class="eyebrow-light">// where this goes</p>
+    <h2 class="section-h-light">The future of GTM<br><em>engineering.</em></h2>
+    <p class="section-intro-light">The five agents above operate in sequence. What comes next is agents that operate in conversation — with each other, with the CRM, with the signal layer — closing feedback loops that currently require a human in the middle.</p>
+    <div class="future-grid">
+      <div class="future-cell">
+        <p class="future-label">Feedback loops</p>
+        <p class="future-claim">Reply data feeds back into routing.</p>
+        <p class="future-body">A 40% reply rate on one persona × vertical combination is a signal that currently lives in a spreadsheet. The next version of this system routes that back into the copy agent automatically — the routing matrix updates itself based on what's actually working, without a human editing the prompt.</p>
+      </div>
+      <div class="future-cell">
+        <p class="future-label">Agent coordination</p>
+        <p class="future-claim">Reactivation talks to outbound.</p>
+        <p class="future-body">A deal archived by the pipeline reactivation agent because a key stakeholder left — that's a trigger for the outbound signal agent to find the replacement hire and open a fresh conversation at the right moment. Two agents, one handoff, no human in the middle. The system closes its own loop.</p>
+      </div>
+      <div class="future-cell">
+        <p class="future-label">The CRM layer</p>
+        <p class="future-claim">The CRM becomes a living system.</p>
+        <p class="future-body">Not a database you update manually after calls. A continuously enriched, continuously validated foundation that every agent reads from and writes back to in real time. The maintenance agent stops being a cleanup job you schedule quarterly — it becomes the heartbeat of the whole stack.</p>
+      </div>
+      <div class="future-cell">
+        <p class="future-label">The operator role</p>
+        <p class="future-claim">The GTM engineer becomes the architect.</p>
+        <p class="future-body">When the agents handle execution, the human's job shifts entirely to system design: which signals to monitor, how to route them, where to put the quality gates, what the feedback loops optimise for. That's where the leverage is — and it's where the discipline of GTM engineering is going.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="w">
+    <p class="eyebrow">// contact</p>
+    <h2 class="section-h">Let's build something <em>real.</em></h2>
+    <p class="section-intro" style="margin-bottom:0">If your team treats GTM infrastructure as a serious engineering problem, I want to hear about it.</p>
+    <div class="contact-links">
+      <a href="mailto:nabeelahmedhashmi@gmail.com" class="btn btn-dark">nabeelahmedhashmi@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nabeelahashmi/" target="_blank" class="btn btn-ghost">LinkedIn →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="fm">Nabeel Hashmi · GTM Engineer · Heidelberg</span>
+    <span class="fm"><a href="https://www.linkedin.com/pulse/youre-bloating-your-crm-numbers-you-know-cost-has-never-norman-rohr-6o2zf/" target="_blank">Read the article →</a></span>
+    <span class="fm">© 2026</span>
+  </div>
+</footer>
+
+<script>
+async function stream(system, user, outId, btnId, arrId) {
+  const btn = document.getElementById(btnId);
+  const arr = document.getElementById(arrId);
+  const out = document.getElementById(outId);
+  const txt = document.getElementById(outId.replace('-out','-txt'));
+
+  btn.disabled = true;
+  arr.classList.add('spinning');
+  out.classList.add('on');
+  txt.textContent = '';
+  txt.classList.add('blink');
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ system, user })
+    });
+
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      txt.textContent = 'Error: ' + (e.error || 'Something went wrong.');
+      txt.classList.remove('blink');
+      btn.disabled = false;
+      arr.classList.remove('spinning');
+      return;
+    }
+
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, {stream: true});
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6).trim();
+        if (d === '[DONE]') break;
+        try {
+          const p = JSON.parse(d);
+          if (p.type === 'content_block_delta' && p.delta?.text) {
+            txt.textContent += p.delta.text;
+          }
+        } catch {}
+      }
+    }
+  } catch {
+    txt.textContent = 'Connection error. Try again.';
+  }
+  txt.classList.remove('blink');
+  btn.disabled = false;
+  arr.classList.remove('spinning');
+}
+
+function runA1() {
+  const val = document.getElementById('a1-in').value.trim();
+  if (!val) { document.getElementById('a1-in').focus(); return; }
+  stream(
+    `You are a senior GTM intelligence analyst embedded inside an AI outbound engine. You read raw signals and extract precise, actionable outbound intelligence. You are direct and specific — no filler, no generic observations. Your output is immediately used by a copy agent to generate personalised outreach.`,
+    `Classify this signal and extract outbound intelligence:
+
+---
+${val}
+---
+
+Output exactly this structure — no preamble:
+
+SIGNAL TYPE
+[One of: Hiring signal / Funding signal / Product launch / Leadership change / Tech stack signal / Expansion signal / Other] — one sentence explaining the classification.
+
+IMPLIED BUYING INTENT
+[What is this company likely evaluating or prioritising right now? Be specific to what the signal reveals — not generic.]
+
+URGENCY WINDOW
+[High / Medium / Low] — one sentence on why the window is open or closing.
+
+TARGET PERSONA
+[The one or two personas at this company most worth reaching given this specific signal. Job title level.]
+
+OUTREACH HOOK
+[A single opening line — under 20 words — that references this signal without sounding automated. Feels like a sharp human noticed it, not a scraper.]
+
+No padding. No extra commentary.`,
+    'a1-out', 'a1-btn', 'a1-arr'
+  );
+}
+
+function runA2() {
+  const persona = document.getElementById('a2-persona').value;
+  const vertical = document.getElementById('a2-vertical').value;
+  stream(
+    `You are the persona-and-vertical routing layer inside an AI outbound engine. You generate precise, copy-ready outreach angles for specific persona × vertical combinations. You understand that different buyers — even at the same company — have fundamentally different pain points, language, and decision criteria. You write copy that reads like a practitioner, not a platform.`,
+    `Generate an outbound copy angle for this exact routing path:
+
+Persona: ${persona}
+Vertical: ${vertical}
+
+Output exactly this structure — no preamble:
+
+PAIN POINT
+[The specific operational frustration this persona feels in this vertical. Not "efficiency" or "scale" — the actual problem they lose sleep over. 2 sentences maximum.]
+
+VALUE PROP ANGLE
+[How an AI outbound infrastructure offer lands with this persona. What outcome do they actually care about — in their language, not yours. 2 sentences.]
+
+OPENING LINE
+[Cold email opening. Under 25 words. No "I noticed", no "I hope this finds you well", no "I came across your profile". Starts with something specific to their situation. Reads like a practitioner who understands their world.]
+
+FOLLOW-UP HOOK
+[Step 2 of the sequence. Different angle, same specificity. Under 20 words.]
+
+No filler. Four sections only.`,
+    'a2-out', 'a2-btn', 'a2-arr'
+  );
+}
+
+function runA3() {
+  const val = document.getElementById('a3-in').value.trim();
+  if (!val) { document.getElementById('a3-in').focus(); return; }
+  stream(
+    `You are QP3 — a quality guardrail agent sitting at the final gate of an AI outbound engine. Your job is to score cold email copy across three dimensions before it sends, flag precisely what fails, and rewrite the weakest element. You are the last check before delivery. You are exacting and direct. Nothing generic leaves the system on your watch.`,
+    `Score this cold email draft:
+
+---
+${val}
+---
+
+Output exactly this structure — no preamble:
+
+SIGNAL RELEVANCE [score: X/10]
+[Does this email open with a specific, real buying signal — or does it open cold with no trigger? What's missing or present? Be precise.]
+
+PERSONALISATION DEPTH [score: X/10]
+[Does this read like it was written for this specific person — or could it have been sent to 500 people unchanged? Name exactly what's generic.]
+
+CLARITY OF ASK [score: X/10]
+[Is the call to action specific and low-friction, or vague? Is it clear what happens next and why now?]
+
+OVERALL VERDICT
+[Pass / Needs revision / Fail] — one sentence naming the deciding factor.
+
+REWRITE
+[Rewrite the single weakest element — the opening line if the signal relevance is low, the CTA if clarity fails. Show clearly: BEFORE / AFTER.]
+
+Be specific in every section.`,
+    'a3-out', 'a3-btn', 'a3-arr'
+  );
+}
+</script>
+</body>
+</html>
